@@ -1,0 +1,20 @@
+name: Question
+description: How something works, or whether Zäm fits your setup.
+title: "[Question]: "
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The [docs](https://zaem.ch/docs) and the [FAQ](https://zaem.ch/#faq) answer the common questions. If they don't answer yours, ask here.
+  - type: textarea
+    id: question
+    attributes:
+      label: Your question
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Your setup
+      description: Whatever helps the answer fit, such as systems, team size, coding agents or how you host the server.

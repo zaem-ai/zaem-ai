@@ -1,0 +1,41 @@
+name: Feature request or idea
+description: Something Zäm could do, or do better.
+title: "[Idea]: "
+labels: ["enhancement"]
+type: Feature
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What are you trying to do?
+      description: The situation and what gets in the way today. This matters more than the solution.
+      placeholder: When I hand a session to a teammate, I'd like to…
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would help?
+      description: How you imagine it working. Mock-ups and screenshots are welcome.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: What do you do instead today?
+  - type: dropdown
+    id: area
+    attributes:
+      label: Which part of Zäm?
+      multiple: true
+      options:
+        - Desktop app
+        - zaem command line
+        - Session sync, locks and handoffs
+        - Claude Code
+        - Grok Build (preview)
+        - VS Code
+        - Web console
+        - Server and self-hosting
+        - Security and encryption
+        - Documentation

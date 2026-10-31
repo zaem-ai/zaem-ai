@@ -1,0 +1,81 @@
+name: Server or self-hosting problem
+description: Installing, configuring, upgrading or running the Zäm server, its console or sign-in.
+title: "[Server]: "
+labels: ["bug", "self-hosting"]
+type: Bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The [self-hosting guide](https://zaem.ch/docs/self-hosting) covers every setting, upgrades and backups; it may already answer this.
+
+        **Remove secrets before pasting configuration:** client secrets, database passwords, S3 keys, `ZAEM_BOOTSTRAP_*` values and tokens.
+  - type: dropdown
+    id: deployment
+    attributes:
+      label: How does the server run?
+      options:
+        - Docker / Docker Compose
+        - Kubernetes (Helm chart)
+        - Railway
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Server version
+      description: The `ghcr.io/zaem-ai/zaem-server` image tag, and the Helm chart version if you use it.
+      placeholder: "image 1.0.0 · chart 1.0.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Which part?
+      multiple: true
+      options:
+        - Startup or configuration
+        - Sign-in (OpenID Connect provider)
+        - Web console
+        - Device sign-in from the app or zaem login
+        - ScyllaDB / Cassandra
+        - PostgreSQL
+        - NATS
+        - Object storage (code checkpoints)
+        - Metrics or traces
+        - Upgrade
+        - Something else
+    validations:
+      required: true
+  - type: input
+    id: identity
+    attributes:
+      label: OpenID Connect provider
+      placeholder: "Keycloak 26 · Microsoft Entra ID · Google · Okta · …"
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What you did, what you saw, and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: config
+    attributes:
+      label: Configuration (secrets removed)
+      description: The relevant environment variables or Helm values.
+      render: yaml
+  - type: textarea
+    id: logs
+    attributes:
+      label: Server logs
+      description: The lines around the problem. The server never logs session contents.
+      render: text
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before you submit
+      options:
+        - label: I removed passwords, client secrets, keys and tokens from what I pasted.
+          required: true

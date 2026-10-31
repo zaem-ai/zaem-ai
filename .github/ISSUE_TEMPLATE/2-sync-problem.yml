@@ -1,0 +1,92 @@
+name: Sync or handoff problem
+description: A session doesn't sync, stays locked, won't hand over, or continues differently on another computer.
+title: "[Sync]: "
+labels: ["bug", "sync"]
+type: Bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Sync problems usually involve two computers, so the details from **both** help most. **Never paste session contents, keys or tokens.**
+  - type: dropdown
+    id: problem
+    attributes:
+      label: What's wrong?
+      options:
+        - A session stopped syncing or never appeared
+        - Importing earlier sessions is stuck or fails
+        - A window is blocked although nobody else is driving
+        - A handoff never arrives or never finishes
+        - The session looks different on the other computer
+        - A conflict copy appeared that I didn't expect
+        - Claude's memory doesn't sync
+        - Something else
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What you did on which computer, in order, and every message Zäm showed, word for word (in the app, the terminal or Claude Code).
+      placeholder: |
+        On my laptop I closed Claude Code mid-session, then on my desktop I clicked Open in Terminal and saw “Zäm: …”
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Zäm version on each computer
+      description: In the desktop app at the bottom of *Settings*, or `zaem --version`.
+      placeholder: "laptop 1.0.0 · desktop 1.0.0"
+    validations:
+      required: true
+  - type: input
+    id: computers
+    attributes:
+      label: Systems of the computers involved
+      placeholder: "macOS 26.1 (laptop) · Ubuntu 26.04 (dev box)"
+    validations:
+      required: true
+  - type: dropdown
+    id: agent
+    attributes:
+      label: Coding agent
+      options:
+        - Claude Code (terminal)
+        - Claude Code (VS Code)
+        - Grok Build (preview)
+        - More than one of these
+    validations:
+      required: true
+  - type: input
+    id: agent-version
+    attributes:
+      label: Agent version
+      description: "`claude --version` or `grok --version`"
+  - type: textarea
+    id: status
+    attributes:
+      label: "`zaem status` from each computer"
+      description: It lists the sessions the computer syncs, why an upload is stuck, and the progress of an import.
+      render: text
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: |
+        The lines around the problem from the desktop app's log (*Settings → Logs*, the folder `~/.zaem/logs`), or from `zaem daemon` if you run it yourself. They hold session ids and folder paths, never session contents.
+      render: text
+  - type: input
+    id: server
+    attributes:
+      label: Server version and how it runs
+      description: The `zaem-server` image or Helm chart version, and Docker, Helm, Railway or other.
+      placeholder: "ghcr.io/zaem-ai/zaem-server:1.0.0 on Helm"
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before you submit
+      options:
+        - label: Both computers run the same Zäm version, or I said above which differ.
+        - label: What I pasted contains no keys, tokens or session contents.
+          required: true

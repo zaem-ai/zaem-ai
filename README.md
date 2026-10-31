@@ -266,6 +266,12 @@ Yes. The notes Claude saves for a repository sync between your own computers, en
 </details>
 
 <details>
+<summary><b>Does Zäm work with Grok Build or other coding agents?</b></summary>
+
+Not yet. Zäm syncs Claude Code sessions today. Grok Build support is coming next: our team works with both Claude Code and Grok Build every day.
+</details>
+
+<details>
 <summary><b>Is Zäm free?</b></summary>
 
 Yes. The desktop app, the command-line tool, the server image and the Helm chart are free to use. You run the server yourself: on Railway with one click, with Docker, or on Kubernetes.

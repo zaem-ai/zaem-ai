@@ -1,0 +1,104 @@
+name: Bug report
+description: Something in the desktop app or the zaem command line doesn't work as it should.
+title: "[Bug]: "
+labels: ["bug"]
+type: Bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report this. A session that stopped syncing, a lock or a handoff has its own form: **Sync or handoff problem**. A problem with your server has **Server or self-hosting problem**.
+
+        **Never paste session contents, keys or tokens.** Sessions are end-to-end encrypted; keep it that way here too.
+  - type: dropdown
+    id: component
+    attributes:
+      label: Where does it happen?
+      options:
+        - Desktop app
+        - zaem command line
+        - Claude Code plugin (hooks, status line)
+        - VS Code
+        - Web console
+        - Not sure
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What you saw, including any message word for word. Screenshots help; drag them in here.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Link a folder
+        2. Start Claude Code in it
+        3. …
+    validations:
+      required: false
+  - type: input
+    id: version
+    attributes:
+      label: Zäm version
+      description: In the desktop app at the bottom of *Settings*, or `zaem --version`.
+      placeholder: "1.0.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      multiple: true
+      options:
+        - macOS (Apple silicon)
+        - macOS (Intel)
+        - Windows
+        - Linux (x64)
+        - Linux (ARM64)
+    validations:
+      required: true
+  - type: input
+    id: os-version
+    attributes:
+      label: System version and, on Linux, distribution
+      placeholder: "macOS 26.1 · Windows 11 24H2 · Ubuntu 26.04"
+  - type: dropdown
+    id: agent
+    attributes:
+      label: Coding agent
+      options:
+        - Claude Code
+        - Grok Build (preview)
+        - Both
+        - Doesn't matter
+  - type: input
+    id: agent-version
+    attributes:
+      label: Agent version
+      description: "`claude --version` or `grok --version`"
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: |
+        `zaem status`, and the lines around the problem from the desktop app's log: *Settings → Logs* opens the folder (`~/.zaem/logs`). Logs hold session ids and folder paths, never session contents; remove anything you'd rather not share.
+      render: text
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before you submit
+      options:
+        - label: I searched the existing issues and this isn't one of them.
+          required: true
+        - label: What I pasted contains no keys, tokens or session contents.
+          required: true
